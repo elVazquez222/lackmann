@@ -32,4 +32,5 @@ const entitySchema = new Schema<Entity>({
   tenantId: { type: String },
 });
 
-export const EntityModel = model<Entity>('Entity', entitySchema);
+const EntityModel = model<Entity>('Entity', entitySchema);
+export default EntityModel;
