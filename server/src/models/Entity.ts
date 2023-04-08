@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-interface Property {
+export interface Property {
   id: string;
   description: string;
   dataType: 'string' | 'number' | 'boolean' | 'date' | 'dateTime' | 'time' | 'object' | 'array';
@@ -12,7 +12,7 @@ interface Entity {
   id: string;
   name: string;
   description: string;
-  properties: Property[];
+  properties?: Property[];
   tenantId?: string;
 }
 

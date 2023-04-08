@@ -1,20 +1,17 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import React from 'react';
+import './App.css';
+import EntityManagement from './views/EntityManagement';
+import OrderManagement from './views/OrderManagement';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  useEffect( () => {
-  }, [])
-
+const App: React.FC = () => {
   return (
     <div className="App">
-      <form>
-        <label htmlFor="dies">Dies</label>
-        <input id="dies" />
-      </form>
+      <h1>Entitäten-Verwaltung</h1>
+      <EntityManagement />
+      <h1>Bestullngs-Verwaltung</h1>
+      <OrderManagement />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
