@@ -1,19 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import EntityForm from '../components/EntityForm';
 import EntityList from '../components/EntityList';
-
-interface Property {
-  id: string;
-  description: string;
-  type: string;
-}
-
-interface Entity {
-  id: string;
-  name: string;
-  description: string;
-  properties: Property[];
-}
+import { createEntity, getAllEntities } from '../services/entityService';
+import { Entity } from '../types/Entity';
 
 const EntityManagement: React.FC = () => {
   const [showModal, setShowModal] = useState<Boolean>(false);
@@ -24,27 +13,14 @@ const EntityManagement: React.FC = () => {
   }, []);
 
   const fetchEntities = async () => {
-    const response = await fetch('http://localhost:5000/entities');
-    const data = await response.json();
+    const data = await getAllEntities();
     setEntities(data);
   };
 
   const handleCreateEntity = async (entity: { id: number; name: string; description: string; properties: Property[] }) => {
-    const response = await fetch('http://localhost:5000/entities', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(entity),
-    });
-
-    if (response.ok) {
-      const newEntity: Entity = await response.json() as Entity;
-      setEntities([...entities, newEntity]);
-      setShowModal(false);
-    } else {
-      console.error('Error creating entity');
-    }
+    const newEntity = await createEntity(entity);
+    setEntities([...entities, newEntity]);
+    setShowModal(false);
   };
 
   return (

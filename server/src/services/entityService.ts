@@ -7,9 +7,9 @@ export const createEntity = async (entityData: {
   properties: {
     id: string;
     description: string;
-    dataType: string;
-    formatPattern?: string;
-    selectionSource?: string;
+    dataType: 'string' | 'number' | 'boolean' | 'date' | 'dateTime' | 'time' | 'object' | 'array';
+    formattingPattern?: string;
+    source?: string;
   }[];
   tenantId?: string;
 }) => {

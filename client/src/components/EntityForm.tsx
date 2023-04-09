@@ -3,7 +3,7 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 interface Property {
   id: string;
   description: string;
-  type: string;
+  dataType: string;
 }
 
 interface EntityFormProps {
@@ -22,7 +22,7 @@ const EntityForm: React.FC<EntityFormProps> = ({ onSubmit }) => {
   };
 
   const handleAddProperty = () => {
-    setProperties([...properties, { id: `id_${Math.random()}`, description: '', type: 'string' }]);
+    setProperties([...properties, { id: `id_${Math.random()}`, description: '', dataType: 'string' }]);
   };
 
   const handlePropertyChange = (index: number, key: keyof Property, value: string) => {
@@ -63,7 +63,7 @@ const EntityForm: React.FC<EntityFormProps> = ({ onSubmit }) => {
             <input value={property.description} onChange={(e: ChangeEvent<HTMLInputElement>) => handlePropertyChange(index, 'description', e.target.value)} />
 
             <label>Typ:</label>
-            <select value={property.type} onChange={(e: ChangeEvent<HTMLSelectElement>) => handlePropertyChange(index, 'type', e.target.value)}>
+            <select value={property.dataType} onChange={(e: ChangeEvent<HTMLSelectElement>) => handlePropertyChange(index, 'type', e.target.value)}>
               <option value="string">string</option>
               <option value="number">number</option>
               <option value="boolean">boolean</option>

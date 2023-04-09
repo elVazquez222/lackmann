@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Entity } from '../types/Entity';
 import { Order } from '../types/Order';
+import * as orderService from '../services/orderService';
+import * as entityService from '../services/entityService';
 
 interface OrderFormProps {
   onSubmit: (order: Order) => void;
@@ -10,8 +13,9 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
   const [title, setTitle] = useState('');
   const [position, setPosition] = useState('');
   const [sum, setSum] = useState<number | undefined>();
+  const [entities, setEntities] = useState<Entity[]>([]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const newOrder: Order = {
@@ -21,16 +25,33 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
       sum: sum ? sum : 0,
     };
 
-    onSubmit(newOrder);
-
-    setOrderNumber('');
-    setTitle('');
-    setPosition('');
-    setSum(undefined);
+    try {
+      const createdOrder = await orderService.createOrder(newOrder);
+      onSubmit(createdOrder);
+      setOrderNumber('');
+      setTitle('');
+      setPosition('');
+      setSum(undefined);
+    } catch (error) {
+      console.error('Error creating order:', error);
+    }
   };
 
+  useEffect(() => {
+    const fetchEntities = async () => {
+      try {
+        const entities = await entityService.getAllEntities();
+        setEntities(entities);
+      } catch (error) {
+        console.error('Error fetching entities:', error);
+      }
+    };
+
+    fetchEntities();
+  }, []);
+
   return (
-    <form  className="orderForm" onSubmit={handleSubmit}>
+    <form className="orderForm" onSubmit={handleSubmit}>
       <label htmlFor="orderNumber">Order Number:</label>
       <input
         id="orderNumber"
@@ -59,6 +80,15 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
         value={sum || ''}
         onChange={(e) => setSum(Number(e.target.value))}
       />
+
+      <label htmlFor="entity">Entität:</label>
+      <select name="entity" id="entity">
+        {entities.map((entity) => (
+          <option key={entity.id} value={entity.id}>
+            {entity.name}
+          </option>
+        ))}
+      </select>
 
       <button type="submit">Hinzufügen</button>
     </form>
