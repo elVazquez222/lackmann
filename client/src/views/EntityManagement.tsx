@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import EntityForm from '../components/EntityForm';
 import EntityList from '../components/EntityList';
 import { createEntity, getAllEntities } from '../services/entityService';
-import { Property, Entity } from '../types/Entity';
+import { Entity, Property } from '../types/Entity';
 
 const EntityManagement: React.FC = () => {
   const [showModal, setShowModal] = useState<Boolean>(false);
@@ -24,12 +24,12 @@ const EntityManagement: React.FC = () => {
   };
 
   return (
-    <div>
-      <button onClick={() => setShowModal(true)}>Create New Entity</button>
+    <div className="entityManagement component">
+      <button onClick={() => setShowModal(true)}>Entität anlegen</button>
       {showModal && (
         <div>
           <EntityForm onSubmit={handleCreateEntity} />
-          <button onClick={() => setShowModal(false)}>Close</button>
+          <button onClick={() => setShowModal(false)}>X</button>
         </div>
       )}
       <EntityList entities={entities} />

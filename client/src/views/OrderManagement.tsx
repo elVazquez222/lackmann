@@ -22,8 +22,8 @@ const OrderManagement: React.FC = () => {
   };
 
   return (
-    <div className="orderManagement">
-      <h2>Order Management</h2>
+    <div className="orderManagement component">
+      <h2>Betsellverwaltung: </h2>
       <OrderForm onSubmit={handleCreateOrder} />
       <OrderList orders={orders} />
     </div>

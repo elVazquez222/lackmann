@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import * as entityService from '../services/entityService';
+import * as orderService from '../services/orderService';
 import { Entity } from '../types/Entity';
 import { Order } from '../types/Order';
-import * as orderService from '../services/orderService';
-import * as entityService from '../services/entityService';
 
 interface OrderFormProps {
   onSubmit: (order: Order) => void;
@@ -52,7 +52,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
 
   return (
     <form className="orderForm" onSubmit={handleSubmit}>
-      <label htmlFor="orderNumber">Order Number:</label>
+      <label htmlFor="orderNumber">Bestell°:</label>
       <input
         id="orderNumber"
         value={orderNumber}

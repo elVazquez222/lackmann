@@ -1,5 +1,5 @@
 import React from 'react';
-import { Entity } from '../types/Entity'
+import { Entity } from '../types/Entity';
 
 type EntityListProps = {
   entities: Entity[];
@@ -8,7 +8,7 @@ type EntityListProps = {
 const EntityList: React.FC<EntityListProps> = ({ entities }) => {
   return (
     <div>
-      <h2>Entity List</h2>
+      <h2>Entitäten verwalten:</h2>
       <ul>
         {entities.map((entity) => (
           <li key={entity.id}>

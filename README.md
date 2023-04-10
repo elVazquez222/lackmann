@@ -73,6 +73,12 @@ Caddy sollte jetzt im Hintergrund laufen.
 
 > systemctl status caddy
 
+Caddy manuell starten für TroubleShooting:
+> sudo /usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
+
+Wenn alles geklappt hat ist die api über <https://api.vazquez.website/orders> erreichbar 🎉
+>
+
 # Backend
 
 ### starten
