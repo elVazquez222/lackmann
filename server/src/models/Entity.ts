@@ -1,9 +1,11 @@
 import { Schema, model } from 'mongoose';
 
+export type EntityDataType = 'string' | 'number' | 'boolean' | 'date' | 'dateTime' | 'time' | 'object' | 'array';
+
 export interface Property {
   id: string;
   description: string;
-  dataType: 'string' | 'number' | 'boolean' | 'date' | 'dateTime' | 'time' | 'object' | 'array';
+  dataType: EntityDataType;
   formattingPattern?: string;
   source?: string;
 }
@@ -19,7 +21,7 @@ interface Entity {
 const propertySchema = new Schema<Property>({
   id: { type: String, required: true },
   description: { type: String, required: true },
-  dataType: { type: String, required: true },
+  dataType: { type: 'string', required: true },
   formattingPattern: { type: String },
   source: { type: String },
 });

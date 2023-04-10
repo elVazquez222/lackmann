@@ -1,7 +1,9 @@
+export type EntityDataType = 'string' | 'number' | 'boolean' | 'date' | 'dateTime' | 'time' | 'object' | 'array';
+
 export interface Property {
   id: string;
   description: string;
-  dataType: 'string' | 'number' | 'boolean' | 'date' | 'dateTime' | 'time' | 'object' | 'array';
+  dataType: EntityDataType;
   formattingPattern?: string;
   source?: string;
 }

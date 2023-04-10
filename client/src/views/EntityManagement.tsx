@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import EntityForm from '../components/EntityForm';
 import EntityList from '../components/EntityList';
 import { createEntity, getAllEntities } from '../services/entityService';
-import { Entity } from '../types/Entity';
+import { Property, Entity } from '../types/Entity';
 
 const EntityManagement: React.FC = () => {
   const [showModal, setShowModal] = useState<Boolean>(false);
