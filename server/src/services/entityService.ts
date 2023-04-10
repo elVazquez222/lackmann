@@ -7,7 +7,7 @@ export const createEntity = async (entityData: {
   properties: {
     id: string;
     description: string;
-    dataType: 'string' | 'number' | 'boolean' | 'date' | 'dateTime' | 'time' | 'object' | 'array';
+    dataType: 'string' | 'number' | 'boolean' | 'date' | 'dateTime' | 'time';
     formattingPattern?: string;
     source?: string;
   }[];

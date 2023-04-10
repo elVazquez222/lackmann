@@ -7,13 +7,26 @@ interface OrderListProps {
 
 const OrderList: React.FC<OrderListProps> = ({ orders }) => {
   return (
-    <ul>
-      {orders.map((order) => (
-        <li key={order._id || order.orderNumber}>
-          <strong>Order Number:</strong> {order.orderNumber} | <strong>Title:</strong> {order.title} | <strong>Position:</strong> {order.position} | <strong>Sum:</strong> {order.sum}
-        </li>
-      ))}
-    </ul>
+    <table className="orderList">
+      <thead>
+        <tr>
+          <th>Bestellnummer</th>
+          <th>Titel</th>
+          <th>Position</th>
+          <th>Summe</th>
+        </tr>
+      </thead>
+      <tbody>
+        {orders.map((order) => (
+          <tr key={`${order.orderNumber}_${Math.random()}`}>
+            <td>{order.orderNumber}</td>
+            <td>{order.title}</td>
+            <td>{order.position}</td>
+            <td>{order.sum}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
 

@@ -57,6 +57,7 @@ Testen
 Statt nodemon lieber pm2 verwenden.
 > npm i -g pm2
 >
+siehe "Backend"
 
 # https setup
 

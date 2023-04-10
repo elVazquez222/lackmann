@@ -2,16 +2,6 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }
 
 a {
@@ -41,16 +31,11 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
   border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 .app {
@@ -59,8 +44,10 @@ button:focus-visible {
 }
 
 .component {
+  padding-top: 2rem;
   max-width: 1000px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .entityManagement form, .orderManagement form {
@@ -83,16 +70,168 @@ button:focus-visible {
 }
 
 .navigation a {
-  font-size: 24px;
+  font-size: 18px;
   color: #333;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .navigation a:hover {
   color: #007bff;
 }
 
+.orderForm, .entityForm {
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 2rem;
+}
+
+.toggleOrderFormBtn {
+  font-size: 12px;
+
+}
+
+.orderList, .entityList {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+}
+
+.orderList th,
+.orderList td {
+  padding: 8px 16px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.orderList tr:nth-child(even) {
+  background-color: #f2f2f2;
+  color: black;
+}
+
+.orderList th {
+  background-color: #4caf50;
+  color: white;
+}
+
+.entityList {
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+  border-radius: 5px;
+}
+
+.entityList ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.entityList li {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  padding: 10px;
+  gap: 1rem;
+  text-align: center;
+}
+
+.entityList h2 {
+  margin-bottom: 10px;
+}
+
+.propertyList {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.propertyList li {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 4px 10px;
+  min-width: 100px;
+  gap: 1rem;
+  text-align: center;
+}
+
+.orderForm {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+.modal {
+  position: relative;
+}
+
+.entityForm {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px #ccc;
+  padding-top: 5rem;
+}
+
+.propertyForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.closeEntityFormBtn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  z-index: 5;
+  padding: 4px 10px;
+}
+
+.entityForm div {
+  margin-bottom: 10px;
+}
+
+.entityForm label {
+  display: inline-block;
+  width: 100px;
+  font-weight: bold;
+}
+
+.entityForm input,
+.entityForm select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.entityForm button {
+  margin-top: 10px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.entityForm button:hover {
+  background-color: #3e8e41;
+}
+
+.entityForm h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
