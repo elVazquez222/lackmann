@@ -6,6 +6,7 @@ import { Order } from '../types/Order';
 
 const OrderManagement: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>([]);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -21,10 +22,15 @@ const OrderManagement: React.FC = () => {
     setOrders([...orders, newOrder]);
   };
 
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
+
   return (
     <div className="orderManagement component">
       <h2>Betsellverwaltung: </h2>
-      <OrderForm onSubmit={handleCreateOrder} />
+      <button className="toggleOrderFormBtn" onClick={toggleForm}>{showForm ? 'X Fertig' : 'Bestellung anlegen'}</button>
+      {showForm && <OrderForm onSubmit={handleCreateOrder} />}
       <OrderList orders={orders} />
     </div>
   );

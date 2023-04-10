@@ -14,6 +14,8 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
   const [position, setPosition] = useState('');
   const [sum, setSum] = useState<number | undefined>();
   const [entities, setEntities] = useState<Entity[]>([]);
+  const [selectedEntityId, setSelectedEntityId] = useState('');
+  const [selectedEntity, setSelectedEntity] = useState<Entity | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,6 +40,11 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
   };
 
   useEffect(() => {
+    const foundEntity = entities.find((entity) => entity.id === selectedEntityId);
+    setSelectedEntity(foundEntity || null);
+  }, [selectedEntityId, entities]);
+
+  useEffect(() => {
     const fetchEntities = async () => {
       try {
         const entities = await entityService.getAllEntities();
@@ -52,7 +59,22 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
 
   return (
     <form className="orderForm" onSubmit={handleSubmit}>
-      <label htmlFor="orderNumber">Bestell°:</label>
+
+      <label htmlFor="entity">Entität:</label>
+      <select
+        name="entity"
+        id="entity"
+        value={selectedEntityId}
+        onChange={(e) => setSelectedEntityId(e.target.value)}
+      >
+        {entities.map((entity) => (
+          <option key={entity.id} value={entity.id}>
+            {entity.name}
+          </option>
+        ))}
+      </select>
+
+      <label htmlFor="orderNumber">Bestellnummer:</label>
       <input
         id="orderNumber"
         value={orderNumber}
@@ -81,16 +103,20 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
         onChange={(e) => setSum(Number(e.target.value))}
       />
 
-      <label htmlFor="entity">Entität:</label>
-      <select name="entity" id="entity">
-        {entities.map((entity) => (
-          <option key={entity.id} value={entity.id}>
-            {entity.name}
-          </option>
-        ))}
-      </select>
-
-      <button type="submit">Hinzufügen</button>
+      {selectedEntity &&
+        selectedEntity.properties &&
+        selectedEntity.properties.map((property, index) => (
+          <React.Fragment key={index}>
+            <label>{property.description}:</label>
+            {property.dataType === 'string' && <input type="text" />}
+            {property.dataType === 'number' && <input type="number" />}
+            {property.dataType === 'boolean' && <input type="checkbox" />}
+            {property.dataType === 'date' && <input type="date" />}
+            {property.dataType === 'dateTime' && <input type="datetime-local" />}
+            {property.dataType === 'time' && <input type="time" />}
+            </React.Fragment>
+            ))}
+          <button type="submit">Hinzufügen</button>
     </form>
   );
 };

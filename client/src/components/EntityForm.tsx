@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
-import { EntityDataType, Property } from '../types/Entity'
+import { EntityDataType, Property } from '../types/Entity';
 
 
 interface EntityFormProps {
@@ -21,7 +21,7 @@ const EntityForm: React.FC<EntityFormProps> = ({ onSubmit }) => {
     setProperties([...properties, { id: `id_${Math.random()}`, description: '', dataType: 'string' }]);
   };
 
-  const handlePropertyChange = (index: number, key: keyof Property, value: string) => {
+  const handlePropertyChange = (index: number, key: keyof Property, value: EntityDataType) => {
     const newProperties = [...properties];
     newProperties[index][key] = value;
     setProperties(newProperties);
@@ -34,7 +34,7 @@ const EntityForm: React.FC<EntityFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="entityForm">
       <div>
         <label>ID:</label>
         <input value={id} type="number" onChange={(e: ChangeEvent<HTMLInputElement>) => setId(Number(e.target.value))} />
@@ -51,23 +51,21 @@ const EntityForm: React.FC<EntityFormProps> = ({ onSubmit }) => {
       <div>
         <h3>Eigenschaften:</h3>
         {properties.map((property, index) => (
-          <div key={index}>
+          <div key={index} className="propertyForm">
             <label>ID:</label>
-            <input value={property.id} onChange={(e: ChangeEvent<HTMLInputElement>) => handlePropertyChange(index, 'id', e.target.value)} />
+            <input value={property.id} onChange={(e: ChangeEvent<HTMLInputElement>) => handlePropertyChange(index, 'id', e.target.value as EntityDataType)} />
 
             <label>Beschreibung:</label>
-            <input value={property.description} onChange={(e: ChangeEvent<HTMLInputElement>) => handlePropertyChange(index, 'description', e.target.value)} />
+            <input value={property.description} onChange={(e: ChangeEvent<HTMLInputElement>) => handlePropertyChange(index, 'description', e.target.value as EntityDataType)} />
 
             <label>Typ:</label>
-            <select value={property.dataType} onChange={(e: ChangeEvent<HTMLSelectElement>) => handlePropertyChange(index, 'dataType', e.target.value)}>
+            <select value={property.dataType} onChange={(e: ChangeEvent<HTMLSelectElement>) => handlePropertyChange(index, 'dataType', e.target.value as EntityDataType)}>
               <option value="string">string</option>
               <option value="number">number</option>
               <option value="boolean">boolean</option>
               <option value="date">date</option>
               <option value="dateTime">dateTime</option>
               <option value="time">time</option>
-              <option value="object">object</option>
-              <option value="array">array</option>
             </select>
 
             <button type="button" onClick={() => handleRemoveProperty(index)}>entfernen</button>

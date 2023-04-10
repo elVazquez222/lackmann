@@ -4,8 +4,9 @@ import EntityList from '../components/EntityList';
 import { createEntity, getAllEntities } from '../services/entityService';
 import { Entity, Property } from '../types/Entity';
 
+
 const EntityManagement: React.FC = () => {
-  const [showModal, setShowModal] = useState<Boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [entities, setEntities] = useState<Entity[]>([]);
 
   useEffect(() => {
@@ -17,7 +18,12 @@ const EntityManagement: React.FC = () => {
     setEntities(data);
   };
 
-  const handleCreateEntity = async (entity: { id: number; name: string; description: string; properties: Property[] }) => {
+  const handleCreateEntity = async (entity: {
+    id: number;
+    name: string;
+    description: string;
+    properties: Property[];
+  }) => {
     const newEntity = await createEntity(entity);
     setEntities([...entities, newEntity]);
     setShowModal(false);
@@ -25,11 +31,13 @@ const EntityManagement: React.FC = () => {
 
   return (
     <div className="entityManagement component">
-      <button onClick={() => setShowModal(true)}>Entität anlegen</button>
+      {!showModal && (
+        <button onClick={() => setShowModal(true)}>Entität anlegen</button>
+      )}
       {showModal && (
-        <div>
+        <div className="modal">
+          <button className="closeEntityFormBtn" onClick={() => setShowModal(false)}>X</button>
           <EntityForm onSubmit={handleCreateEntity} />
-          <button onClick={() => setShowModal(false)}>X</button>
         </div>
       )}
       <EntityList entities={entities} />

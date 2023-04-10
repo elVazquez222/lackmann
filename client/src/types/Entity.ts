@@ -1,4 +1,4 @@
-export type EntityDataType = 'string' | 'number' | 'boolean' | 'date' | 'dateTime' | 'time' | 'object' | 'array';
+export type EntityDataType = 'string' | 'number' | 'boolean' | 'date' | 'dateTime' | 'time';
 
 export interface Property {
   id: string;
