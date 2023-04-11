@@ -93,3 +93,10 @@ Wenn alles geklappt hat ist die api über <https://api.vazquez.website/orders> e
 > pm2 list
 >
 Gibt den akteullen Status aus
+
+# Frontend
+
+lokal
+> npm run build
+>
+Auf Hostinger unter Websites im File manager den Inhalt des dist Ordners nach public_html hochladen

@@ -22,7 +22,7 @@ const OrderList: React.FC<OrderListProps> = ({ orders }) => {
             <td>{order.orderNumber}</td>
             <td>{order.title}</td>
             <td>{order.position}</td>
-            <td>{order.sum}</td>
+            <td style={{textAlign: 'right'}}>{order.sum}€</td>
           </tr>
         ))}
       </tbody>

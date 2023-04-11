@@ -41,10 +41,11 @@ button:hover {
 .app {
   display: flex;
   flex-direction: column;
+  padding: 0 2vw;
 }
 
 .component {
-  padding-top: 2rem;
+  padding: 2rem 0 10rem 0;
   max-width: 1000px;
   margin: 0 auto;
   width: 100%;
@@ -54,6 +55,18 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.textButton {
+  cursor: pointer;
+  font-size: 10px;
+  color: blue;
+  text-decoration: underline;
+  margin-left: auto;
+}
+
+.orderForm  > div > .textButton {
+  margin-left: 1rem;
 }
 
 .navigation {
@@ -81,16 +94,17 @@ button:hover {
   color: #007bff;
 }
 
-.orderForm, .entityForm {
+.orderForm {
   border: 1px solid black;
   padding: 1rem;
   border-radius: 4px;
-  margin-top: 2rem;
 }
 
 .toggleOrderFormBtn {
   font-size: 12px;
-
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
 }
 
 .orderList, .entityList {
@@ -180,12 +194,15 @@ button:hover {
   border: 2px solid #ccc;
   border-radius: 5px;
   box-shadow: 0px 0px 10px #ccc;
-  padding-top: 5rem;
+  font-size: 13px;
 }
 
 .propertyForm {
   display: flex;
   flex-direction: column;
+  padding: 1rem;
+  background: aliceblue;
+  margin-bottom: 8px;
 }
 
 .closeEntityFormBtn {
@@ -200,10 +217,10 @@ button:hover {
   margin-bottom: 10px;
 }
 
-.entityForm label {
+.entityForm label, .orderForm label {
   display: inline-block;
   width: 100px;
-  font-weight: bold;
+  margin-right: 2rem;
 }
 
 .entityForm input,
@@ -213,19 +230,21 @@ button:hover {
   border-radius: 5px;
 }
 
-.entityForm button {
+.formSubmitButton {
   margin-top: 10px;
-  padding: 5px;
+  padding: 5px 10px;
   border: none;
   border-radius: 5px;
   background-color: #4CAF50;
   color: white;
   font-weight: bold;
   cursor: pointer;
+  width: fit-content;
 }
 
-.entityForm button:hover {
+.entityForm button:hover, .toggleOrderFormBtn:hover, .entityFormSubmitButton:hover {
   background-color: #3e8e41;
+  color: white;
 }
 
 .entityForm h3 {

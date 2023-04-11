@@ -28,7 +28,8 @@ const OrderManagement: React.FC = () => {
 
   return (
     <div className="orderManagement component">
-      <h2>Betsellverwaltung: </h2>
+      <h2>Betsellverwaltung und -übersicht: </h2>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.</p>
       <button className="toggleOrderFormBtn" onClick={toggleForm}>{showForm ? 'X Fertig' : 'Bestellung anlegen'}</button>
       {showForm && <OrderForm onSubmit={handleCreateOrder} />}
       <OrderList orders={orders} />
