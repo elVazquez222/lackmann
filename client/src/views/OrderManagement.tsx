@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import OrderForm from '../components/OrderForm';
 import OrderList from '../components/OrderList';
-import { createOrder, getAllOrders } from '../services/orderService';
+import { getAllOrders } from '../services/orderService';
 import { Order } from '../types/Order';
 
 const OrderManagement: React.FC = () => {
@@ -17,8 +17,7 @@ const OrderManagement: React.FC = () => {
     fetchOrders();
   }, []);
 
-  const handleCreateOrder = async (order: Order) => {
-    const newOrder = await createOrder(order);
+  const handleCreateOrder = async (newOrder: Order) => {
     setOrders([...orders, newOrder]);
   };
 

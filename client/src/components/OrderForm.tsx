@@ -20,8 +20,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showEntityForm, setShowEntityForm] = useState<boolean>(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
 
     const newOrder: Order = {
       orderNumber,

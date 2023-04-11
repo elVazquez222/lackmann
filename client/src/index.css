@@ -105,6 +105,7 @@ button:hover {
   margin-bottom: 1rem;
   display: block;
   margin-left: auto;
+  border: 2px solid #4caf50;
 }
 
 .orderList, .entityList {
