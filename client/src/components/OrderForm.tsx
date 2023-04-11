@@ -78,6 +78,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
 
   return (
     <form className="orderForm">
+      <h3>Bestellung hinzufügen</h3>
       <div>
         <label htmlFor="entity">Entität:</label>
         <select
