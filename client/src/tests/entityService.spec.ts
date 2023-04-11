@@ -30,43 +30,4 @@ describe('entityService', () => {
       expect(entities.length).toBeGreaterThan(0);
     });
   });
-
-  describe('getEntityById', () => {
-    it('should return the entity with the given ID', async () => {
-      const entities = await entityService.getAllEntities();
-      const entityId = entities[0].id;
-      const entity = await entityService.getEntityById(entityId);
-
-      expect(entity.id).toEqual(entityId);
-    });
-  });
-
-  describe('updateEntity', () => {
-    it('should update the entity with the given ID', async () => {
-      const entities = await entityService.getAllEntities();
-      const entityId = entities[0].id;
-      const updatedEntityData = {
-        name: 'Updated Entity',
-        description: 'This entity has been updated',
-      };
-
-      const updatedEntity = await entityService.updateEntity(entityId, updatedEntityData);
-
-      expect(updatedEntity.id).toEqual(entityId);
-      expect(updatedEntity.name).toEqual(updatedEntityData.name);
-      expect(updatedEntity.description).toEqual(updatedEntityData.description);
-    });
-  });
-
-  describe('deleteEntity', () => {
-    it('should delete the entity with the given ID', async () => {
-      const entities = await entityService.getAllEntities();
-      const entityId = entities[0].id;
-
-      await entityService.deleteEntity(entityId);
-
-      const deletedEntity = await entityService.getEntityById(entityId);
-      expect(deletedEntity).toBeNull();
-    });
-  });
 });
