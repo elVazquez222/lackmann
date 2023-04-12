@@ -23,6 +23,7 @@ const OrderManagement: React.FC = () => {
 
   const handleCreateOrder = async (newOrder: Order) => {
     setOrders([...orders, newOrder]);
+    updateOrders();
   };
 
   const toggleForm = () => {
@@ -30,12 +31,20 @@ const OrderManagement: React.FC = () => {
   };
 
   const handleUpdatedOrders = (newOrders: Order[]) => {
-    setOrders(newOrders)
-  }
+    setOrders(newOrders);
+    updateOrders();
+  };
 
   const toggleDeletedOrders = () => {
     setShowDeleted(!showDeleted);
-  }
+  };
+
+  const updateOrders = async () => {
+    const fetchedOrders = await getAllOrders();
+    const filteredOrders = fetchedOrders.filter(order => !order.title.includes('(gelöscht)'));
+    setOrders(fetchedOrders);
+    setFilteredOrders(filteredOrders)
+  };
 
   return (
     <div className="orderManagement component">
