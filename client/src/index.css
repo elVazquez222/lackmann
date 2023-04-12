@@ -1,7 +1,8 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+html, body {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: 0;
 }
 
 a {
@@ -253,15 +254,14 @@ button:hover {
   margin-bottom: 10px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@media only screen and (max-width: 700px) {
+  .entityForm div {
+    display: contents;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+
+  .textButton {
+    display: block;
+    font-size: 12px;
+    margin-left: 0!important;
   }
 }
