@@ -1,15 +1,6 @@
 import Order from "../models/Order";
 
-export const createOrder = async (orderData: {
-  orderNumber: string;
-  title: string;
-  position: string;
-  sum: number;
-  applicant?: string;
-  costCenter?: string;
-  supplier?: string;
-  priority?: string;
-}) => {
+export const createOrder = async (orderData: Order) => {
   const order = new Order(orderData);
   await order.save();
   return order.toObject();
@@ -27,16 +18,9 @@ export const getOrderById = async (orderId: string) => {
 
 export const updateOrder = async (
   orderId: string,
-  orderData: {
-    title?: string;
-    position?: string;
-    sum?: number;
-    applicant?: string;
-    costCenter?: string;
-    supplier?: string;
-    priority?: string;
-  }
+  orderData: Order
 ) => {
+  console.log('orderData', orderData)
   const updatedOrder = await Order.findByIdAndUpdate(
     orderId,
     orderData,

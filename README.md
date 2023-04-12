@@ -1,4 +1,4 @@
-..die sind eher Notizen an mich selbst:
+(eher Notizen an mich selbst)
 
 # Infrastruktur allgemein
 

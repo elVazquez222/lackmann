@@ -1,10 +1,11 @@
-import { Schema, model, Document } from 'mongoose';
+import { Document, Schema, model } from 'mongoose';
 
 interface Order extends Document {
   orderNumber: string;
   title: string;
   position: string;
   sum: number;
+  deleted: boolean;
   applicant?: string;
   costCenter?: string;
   supplier?: string;

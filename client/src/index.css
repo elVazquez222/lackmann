@@ -254,6 +254,23 @@ button:hover {
   margin-bottom: 10px;
 }
 
+.deleteIcon:hover {
+  background: red;
+  color: white;
+  cursor: pointer;
+}
+
+.deleted {
+  color: grey!important;
+  font-style:italic;
+}
+
+.filterBox {
+  text-align: right;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
 @media only screen and (max-width: 700px) {
   .entityForm div {
     display: contents;

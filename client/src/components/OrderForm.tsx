@@ -51,6 +51,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
       try {
         const entities = await entityService.getAllEntities();
         setEntities(entities);
+        setSelectedEntityId(entities[0].id);
       } catch (error) {
         console.error('Error fetching entities:', error);
       }
